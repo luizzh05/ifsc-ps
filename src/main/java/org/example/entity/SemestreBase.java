@@ -1,20 +1,40 @@
 package org.example.entity;
 
 import org.example.interfaces.Bimestre;
+import org.example.interfaces.CalculadorBimestre;
+import org.example.interfaces.CalculadorSemestre;
 import org.example.interfaces.Semestre;
 
-public class SemestreBase implements Semestre {
-    private Bimestre b1;
-    private Bimestre b2;
+import java.util.ArrayList;
+import java.util.List;
 
-    public SemestreBase(Bimestre b1, Bimestre b2) {
-        this.b1 = b1;
-        this.b2 = b2;
+public class SemestreBase implements Semestre {
+    private List<Bimestre> bimestres;
+    private CalculadorSemestre calculador;
+
+    public SemestreBase(CalculadorSemestre calculador) {
+        this.bimestres = new ArrayList<>();
+        this.calculador = calculador;
+    }
+
+    @Override
+    public void addBimestre(Bimestre bimestre) {
+        this.bimestres.add(bimestre);
     }
 
     @Override
     public double media() {
-        return (b1.media() + b2.media()) / 2;
+        return this.calculador.calcular(this);
+    }
+
+    @Override
+    public int quantidadeBimestre() {
+        return this.bimestres.size();
+    }
+
+    @Override
+    public double mediaBimestre(int indice) {
+        return this.bimestres.get(indice).media();
     }
 
 }

@@ -1,10 +1,7 @@
 package org.example;
 
 import org.example.entity.*;
-import org.example.interfaces.Arredondador;
-import org.example.interfaces.Avaliavel;
-import org.example.interfaces.Bimestre;
-import org.example.interfaces.Semestre;
+import org.example.interfaces.*;
 
 import java.util.Scanner;
 
@@ -12,8 +9,12 @@ public class Main {
     public static void main(String[] args) {
 
         Scanner scanner = new Scanner(System.in);
-        Bimestre b1 = new BimestreBase();
-        Bimestre b2 = new BimestreBase();
+
+        CalculadorBimestre calculadorBimestre = new CalculadorMediaBimestre();
+        CalculadorSemestre calculadorSemestre = new CalculadorMediaSemestre();
+
+        Bimestre b1 = new BimestreBase(calculadorBimestre);
+        Bimestre b2 = new BimestreBase(calculadorBimestre);
         Arredondador arredondador = new ArredondadorMedia();
 
         for(int i = 0; i < 2; i++) {
@@ -31,7 +32,9 @@ public class Main {
             b2.addAvaliacao(n1);
         }
 
-        Semestre s1 = new SemestreBase(b1, b2);
+        Semestre s1 = new SemestreBase(calculadorSemestre);
+        s1.addBimestre(b1);
+        s1.addBimestre(b2);
 
         System.out.println("------------------------------");
         System.out.println("Média do 1 bimestre: " + b1.media());
