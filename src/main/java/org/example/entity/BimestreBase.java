@@ -21,7 +21,7 @@ public class BimestreBase implements Bimestre {
 
         double soma = 0;
         for (Avaliavel avaliacao : avaliacoes) {
-            soma += avaliacao.valor();
+            soma += avaliacao.nota();
         }
 
         return soma / avaliacoes.size();

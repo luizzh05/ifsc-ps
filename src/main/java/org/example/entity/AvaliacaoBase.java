@@ -1,17 +1,17 @@
 package org.example.entity;
 
 import org.example.interfaces.Avaliavel;
-import org.example.interfaces.Nota;
 
 public class AvaliacaoBase implements Avaliavel {
-    private Nota nota;
+    private double valor;
 
-    public AvaliacaoBase(Nota nota) {
-        this.nota = nota;
+    public AvaliacaoBase(double valor) {
+        this.valor = valor;
     }
 
+
     @Override
-    public double valor() {
-        return nota.valor();
+    public double nota() {
+        return this.valor;
     }
 }
