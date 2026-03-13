@@ -8,8 +8,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class BimestreBase implements Bimestre {
-    private List<Avaliavel> avaliacoes;
-    private CalculadorBimestre calculador;
+    private final List<Avaliavel> avaliacoes;
+    private final CalculadorBimestre calculador;
+
+    public BimestreBase() {
+        this(new CalculadorMediaBimestre());
+    }
 
     public BimestreBase(CalculadorBimestre calculador) {
         this.avaliacoes = new ArrayList<>();

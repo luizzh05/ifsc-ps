@@ -1,7 +1,6 @@
 package org.example.entity;
 
 import org.example.interfaces.Bimestre;
-import org.example.interfaces.CalculadorBimestre;
 import org.example.interfaces.CalculadorSemestre;
 import org.example.interfaces.Semestre;
 
@@ -9,8 +8,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class SemestreBase implements Semestre {
-    private List<Bimestre> bimestres;
-    private CalculadorSemestre calculador;
+    private final List<Bimestre> bimestres;
+    private final CalculadorSemestre calculador;
+
+    public SemestreBase() {
+        this(new CalculadorMediaSemestre());
+    }
 
     public SemestreBase(CalculadorSemestre calculador) {
         this.bimestres = new ArrayList<>();

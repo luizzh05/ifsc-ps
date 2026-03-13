@@ -14,6 +14,13 @@ Programa em Java para calcular:
 - **Reprovado:** frequencia < 75% ou media semestral < 4,0.
 - **Apos recuperacao:** aprovado se `Mfinal >= 6,0`.
 
+## Entrada esperada no console
+
+- 2 notas do 1o bimestre;
+- 2 notas do 2o bimestre;
+- frequencia semestral unica (percentual de `0` a `100`);
+- nota de recuperacao, apenas se elegivel.
+
 ## Executar
 
 Com Maven:
@@ -24,4 +31,3 @@ mvn -q exec:java -Dexec.mainClass="org.example.Main"
 ```
 
 Caso o plugin `exec-maven-plugin` nao esteja disponivel, execute com Java diretamente apos compilar.
-
