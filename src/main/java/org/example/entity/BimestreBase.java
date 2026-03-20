@@ -3,9 +3,11 @@ package org.example.entity;
 import org.example.interfaces.Avaliavel;
 import org.example.interfaces.Bimestre;
 import org.example.interfaces.CalculadorBimestre;
+import org.example.services.CalculadorMediaBimestre;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class BimestreBase implements Bimestre {
     private final List<Avaliavel> avaliacoes;
@@ -27,17 +29,12 @@ public class BimestreBase implements Bimestre {
 
     @Override
     public void addAvaliacao(Avaliavel avaliacao) {
-        this.avaliacoes.add(avaliacao);
+        this.avaliacoes.add(Objects.requireNonNull(avaliacao, "avaliacao nao pode ser nula"));
     }
 
     @Override
-    public int quantidadeAvaliacoes() {
-        return this.avaliacoes.size();
-    }
-
-    @Override
-    public double notaAvaliacao(int indice) {
-        return this.avaliacoes.get(indice).nota();
+    public List<Avaliavel> avaliacoes() {
+        return List.copyOf(this.avaliacoes);
     }
 
 

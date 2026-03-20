@@ -2,7 +2,6 @@ package org.example;
 
 import org.example.entity.*;
 import org.example.interfaces.*;
-
 import java.util.Scanner;
 
 public class Main {
@@ -13,20 +12,26 @@ public class Main {
 
         Bimestre b1 = new BimestreBase();
         Bimestre b2 = new BimestreBase();
-        Arredondador arredondador = new ArredondadorMedia();
+        Arredondador arredondador = new ArredondadorPadrao();
 
         for (int i = 0; i < 2; i++) {
             System.out.println("Digite a nota " + (i + 1) + " do bimestre 1:");
             double nota = scanner.nextDouble();
-            Avaliavel n1 = new NotaAvaliacaoValidada(new AvaliacaoBase(nota));
-            b1.addAvaliacao(n1);
+
+            Nota n1 = new NotaValida(new NotaBase(nota));
+
+            Avaliavel av1 = new AvaliacaoBase(n1);
+            b1.addAvaliacao(av1);
         }
 
         for (int i = 0; i < 2; i++) {
             System.out.println("Digite a nota " + (i + 1) + " do bimestre 2:");
             double nota = scanner.nextDouble();
-            Avaliavel n2 = new NotaAvaliacaoValidada(new AvaliacaoBase(nota));
-            b2.addAvaliacao(n2);
+
+            Nota n2 = new NotaValida(new NotaBase(nota));
+
+            Avaliavel av2 = new AvaliacaoBase(n2);
+            b2.addAvaliacao(av2);
         }
 
         Semestre s1 = new SemestreBase();

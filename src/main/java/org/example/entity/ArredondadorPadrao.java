@@ -2,7 +2,7 @@ package org.example.entity;
 
 import org.example.interfaces.Arredondador;
 
-public class ArredondadorMedia implements Arredondador {
+public class ArredondadorPadrao implements Arredondador {
 
     @Override
     public double arredondar(double valor) {

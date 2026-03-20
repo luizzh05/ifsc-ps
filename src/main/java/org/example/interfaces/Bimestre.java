@@ -1,8 +1,9 @@
 package org.example.interfaces;
 
+import java.util.List;
+
 public interface Bimestre {
     double media();
     void addAvaliacao(Avaliavel avaliacao);
-    int quantidadeAvaliacoes();
-    double notaAvaliacao(int indice);
+    List<Avaliavel> avaliacoes();
 }

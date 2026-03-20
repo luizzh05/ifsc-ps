@@ -1,13 +1,19 @@
-package org.example.entity;
+package org.example.services;
 
 import org.example.interfaces.Bimestre;
 import org.example.interfaces.CalculadorBimestre;
+
+import java.util.List;
 
 public class CalculadorMediaBimestre implements CalculadorBimestre {
 
     @Override
     public double calcular(Bimestre bimestre) {
-        int qtdAvaliacoes = bimestre.quantidadeAvaliacoes();
+        List<Double> notas = bimestre.avaliacoes().stream()
+                .map(avaliacao -> avaliacao.nota())
+                .toList();
+
+        int qtdAvaliacoes = notas.size();
 
         if (qtdAvaliacoes == 0) {
             return 0;
@@ -15,8 +21,8 @@ public class CalculadorMediaBimestre implements CalculadorBimestre {
 
         double somaNotas = 0;
 
-        for(int i = 0; i < qtdAvaliacoes; i++) {
-            somaNotas += bimestre.notaAvaliacao(i);
+        for (Double nota : notas) {
+            somaNotas += nota;
         }
 
         return somaNotas / qtdAvaliacoes;

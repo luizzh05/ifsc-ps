@@ -3,9 +3,11 @@ package org.example.entity;
 import org.example.interfaces.Bimestre;
 import org.example.interfaces.CalculadorSemestre;
 import org.example.interfaces.Semestre;
+import org.example.services.CalculadorMediaSemestre;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class SemestreBase implements Semestre {
     private final List<Bimestre> bimestres;
@@ -22,7 +24,7 @@ public class SemestreBase implements Semestre {
 
     @Override
     public void addBimestre(Bimestre bimestre) {
-        this.bimestres.add(bimestre);
+        this.bimestres.add(Objects.requireNonNull(bimestre, "bimestre nao pode ser nulo"));
     }
 
     @Override
@@ -31,13 +33,8 @@ public class SemestreBase implements Semestre {
     }
 
     @Override
-    public int quantidadeBimestre() {
-        return this.bimestres.size();
-    }
-
-    @Override
-    public double mediaBimestre(int indice) {
-        return this.bimestres.get(indice).media();
+    public List<Bimestre> bimestres() {
+        return List.copyOf(this.bimestres);
     }
 
 }
