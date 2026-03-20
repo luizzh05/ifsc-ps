@@ -10,9 +10,9 @@ public class RecuperacaoBase implements Recuperacao {
     }
 
     @Override
-    public double calcularMediaFinal(double n1, double n2, double notaRecuperacao) {
+    public boolean calcularMediaFinal(double n1, double n2, double notaRecuperacao) {
         double Nmaior = Math.max(n1, n2);
-        return (Nmaior + notaRecuperacao) / 2;
+        return (Nmaior + notaRecuperacao) / 2 > 6;
     }
 }
 
