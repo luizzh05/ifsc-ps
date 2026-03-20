@@ -106,6 +106,5 @@ public class CalcularNotasApp {
                 saida.linha("====================================================");
             }
         }
-
     }
 }
