@@ -1,6 +1,4 @@
-package org.example.entity;
-
-import org.example.interfaces.Entrada;
+package org.example.io;
 
 import java.util.Scanner;
 
@@ -12,7 +10,12 @@ public class EntradaConsole implements Entrada {
     }
 
     @Override
-    public double lerDado() {
+    public int lerInteiro() {
+        return this.scanner.nextInt();
+    }
+
+    @Override
+    public double lerDouble() {
         return this.scanner.nextDouble();
     }
 }

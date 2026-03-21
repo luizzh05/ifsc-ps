@@ -1,9 +1,7 @@
-package org.example.entity;
+package org.example.domain.model;
 
-import org.example.interfaces.Bimestre;
-import org.example.interfaces.CalculadorSemestre;
-import org.example.interfaces.Semestre;
-import org.example.services.CalculadorMediaSemestre;
+import org.example.domain.interfaces.Bimestre;
+import org.example.domain.interfaces.Semestre;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -11,15 +9,10 @@ import java.util.Objects;
 
 public class SemestreBase implements Semestre {
     private final List<Bimestre> bimestres;
-    private final CalculadorSemestre calculador;
+
 
     public SemestreBase() {
-        this(new CalculadorMediaSemestre());
-    }
-
-    public SemestreBase(CalculadorSemestre calculador) {
         this.bimestres = new ArrayList<>();
-        this.calculador = calculador;
     }
 
     @Override
@@ -29,7 +22,16 @@ public class SemestreBase implements Semestre {
 
     @Override
     public double media() {
-        return this.calculador.calcular(this);
+        if(this.bimestres.isEmpty()) {
+            return 0;
+        }
+
+        double somaMedia = 0;
+
+        for(Bimestre bimestre : this.bimestres) {
+            somaMedia += bimestre.media();
+        }
+        return somaMedia / this.bimestres.size();
     }
 
     @Override

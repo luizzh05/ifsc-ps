@@ -1,6 +1,6 @@
-package org.example.entity;
+package org.example.domain.model;
 
-import org.example.interfaces.Nota;
+import org.example.domain.interfaces.Nota;
 
 public class NotaBase implements Nota {
     private final double valor;

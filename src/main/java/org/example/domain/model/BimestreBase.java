@@ -1,9 +1,7 @@
-package org.example.entity;
+package org.example.domain.model;
 
-import org.example.interfaces.Avaliavel;
-import org.example.interfaces.Bimestre;
-import org.example.interfaces.CalculadorBimestre;
-import org.example.services.CalculadorMediaBimestre;
+import org.example.domain.interfaces.Avaliavel;
+import org.example.domain.interfaces.Bimestre;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -11,20 +9,22 @@ import java.util.Objects;
 
 public class BimestreBase implements Bimestre {
     private final List<Avaliavel> avaliacoes;
-    private final CalculadorBimestre calculador;
 
     public BimestreBase() {
-        this(new CalculadorMediaBimestre());
-    }
-
-    public BimestreBase(CalculadorBimestre calculador) {
         this.avaliacoes = new ArrayList<>();
-        this.calculador = calculador;
     }
 
     @Override
     public double media() {
-        return this.calculador.calcular(this);
+        if (this.avaliacoes.isEmpty()) {
+            return 0;
+        }
+
+        double somaNotas = 0;
+        for (Avaliavel avaliacao : this.avaliacoes) {
+            somaNotas += avaliacao.nota();
+        }
+        return somaNotas / this.avaliacoes.size();
     }
 
     @Override

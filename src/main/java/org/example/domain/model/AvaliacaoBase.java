@@ -1,7 +1,7 @@
-package org.example.entity;
+package org.example.domain.model;
 
-import org.example.interfaces.Avaliavel;
-import org.example.interfaces.Nota;
+import org.example.domain.interfaces.Avaliavel;
+import org.example.domain.interfaces.Nota;
 
 public class AvaliacaoBase implements Avaliavel {
     private final Nota nota;

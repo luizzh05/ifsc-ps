@@ -1,4 +1,4 @@
-package org.example.interfaces;
+package org.example.domain.interfaces;
 
 import java.util.List;
 

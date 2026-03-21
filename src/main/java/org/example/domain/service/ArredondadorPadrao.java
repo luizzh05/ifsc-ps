@@ -1,6 +1,6 @@
-package org.example.entity;
+package org.example.domain.service;
 
-import org.example.interfaces.Arredondador;
+import org.example.domain.interfaces.Arredondador;
 
 public class ArredondadorPadrao implements Arredondador {
 

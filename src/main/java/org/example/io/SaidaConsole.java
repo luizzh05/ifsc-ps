@@ -1,6 +1,4 @@
-package org.example.entity;
-
-import org.example.interfaces.Saida;
+package org.example.io;
 
 public class SaidaConsole implements Saida {
     @Override
